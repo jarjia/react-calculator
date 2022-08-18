@@ -1,0 +1,47 @@
+.wrapper {
+    width: fit-content;
+    margin: 100px auto;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.grid > button:nth-child(1) {
+    grid-column: span 2;
+    background-color: lightgray;
+}
+.grid > button:nth-child(2) {
+    background-color: lightgray;
+}
+.grid > button:nth-child(16) {
+    grid-column: span 2;
+}
+.grid > button {
+    border: 1px solid black;
+    padding: 20px;
+    font-size: 20px;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+.grid > button:hover {
+    opacity: 0.9;
+}
+.calculator {
+    height: 80px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    text-align: right;
+    padding: 0 10px;
+}
+.calculator div {
+    align-self: center;
+    text-align: right;
+    width: 100%;
+    font-size: 30px;
+}
+.operators {
+    background-color: orange;
+    color: white;
+}
