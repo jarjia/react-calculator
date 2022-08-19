@@ -11,6 +11,8 @@ const App = () => {
       let stringNum = String(prev)
       if(num === '.' && stringNum.length === 0) {
         return stringNum
+      }else if(prevCalc !== '' && operator === '') {
+        return stringNum
       }else if(stringNum.includes('.') && num === '.') {
         return stringNum
       }else if(stringNum.split('')[0] === '0' && num !== '.' && prevCalc === null) {
@@ -28,26 +30,52 @@ const App = () => {
   }
 
   const handleOperator = (op) => {
-    setCurCalc('')
-    setPrevCalc(prev => {
-      prev = curCalc
-      return prev
-    })
-    setOperator(prev => {
-      if(curCalc === '') {
+    if(curCalc !== '') {
+      setPrevCalc(prev => {
+        setCurCalc('')
+        prev = curCalc
         return prev
-      }else if(operator === '') {
-        prev = op
+      })
+      setOperator(prev => {
+        if(curCalc === '') {
+          return prev
+        }else if(operator === '') {
+          prev = op
+          return prev
+        }
+      })
+    }else {
+      setPrevCalc(prev => {
         return prev
-      }
-    })
+      })
+      setOperator(prev => {
+        if(operator === '') {
+          prev = op
+          return prev
+        }
+      })
+    }
   }
 
   const handleDel = () => {
-    setCurCalc(prev => {
-      let Deleted = prev.slice(0, -1)
-      return Deleted
-    })
+    if(curCalc === '') {
+      setOperator(prev => {
+        let backspace = prev.slice(0, -1)
+        return backspace
+      })
+    }
+    if(operator === '') {
+      setPrevCalc(prev => {
+        let backspace = prev.slice(0, -1)
+        return backspace
+      })
+    }
+    if(curCalc !== '') {
+      setCurCalc(prev => {
+        let backspace = prev.slice(0, -1)
+        return backspace
+      })
+    }
   }
 
   const handleAc = () => {
