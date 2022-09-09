@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import './App.css'
 
 const App = () => {
-  const [curCalc, setCurCalc] = useState('')
+  const [curCalc, setCurCalc] = useState('0')
   const [prevCalc, setPrevCalc] = useState('')
   const [operator, setOperator] = useState('')
 
@@ -19,6 +19,10 @@ const App = () => {
         return stringNum
       }else if(stringNum.includes('.') && num === 0) {
         stringNum += num
+        return stringNum
+      }else if(stringNum.split('')[0] === '0' && !stringNum.includes('.') && num !== '.') {
+        stringNum = ''
+        stringNum = num
         return stringNum
       }else if(num === 0 && stringNum.split('')[0] === '0') {
         return stringNum
