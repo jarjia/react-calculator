@@ -11,6 +11,10 @@ const App = () => {
       let stringNum = String(prev)
       if(num === '.' && stringNum.length === 0) {
         return stringNum
+      }else if(stringNum === '' && operator === '' && prevCalc !== '') {
+        stringNum = `${prevCalc}${num}`
+        setPrevCalc('')
+        return stringNum
       }else if(prevCalc !== '' && operator === '') {
         return stringNum
       }else if(stringNum.includes('.') && num === '.') {
@@ -60,6 +64,9 @@ const App = () => {
       })
     }
   }
+
+  // console.log('cur', curCalc);
+  // console.log('prev', prevCalc);
 
   const handleDel = () => {
     if(curCalc === '') {
