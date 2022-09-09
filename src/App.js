@@ -64,10 +64,7 @@ const App = () => {
       })
     }
   }
-
-  // console.log('cur', curCalc);
-  // console.log('prev', prevCalc);
-
+  
   const handleDel = () => {
     if(curCalc === '') {
       setOperator(prev => {
