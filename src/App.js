@@ -48,6 +48,7 @@ const App = () => {
         if(curCalc === '') {
           return prev
         }else if(operator === '') {
+          prev = ''
           prev = op
           return prev
         }
@@ -57,19 +58,22 @@ const App = () => {
         return prev
       })
       setOperator(prev => {
-        if(operator === '') {
+        if(prevCalc === '' && operator === '') {
+          return prev
+        }else if(operator === '') {
+          prev = ''
           prev = op
           return prev
         }
       })
     }
   }
-  
+
   const handleDel = () => {
-    if(curCalc === '') {
+    if(curCalc === '' && operator !== undefined) {
       setOperator(prev => {
-        let backspace = prev.slice(0, -1)
-        return backspace
+        prev = ''
+        return prev
       })
     }
     if(operator === '') {
